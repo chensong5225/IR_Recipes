@@ -29,3 +29,25 @@ People may face the problem frequently that it is difficult to generate a dish b
 ### Outcome
 
 A search engine that returns the most relevant recipes according to the input query, including ingredients, dishes, cooking steps. The query can provide several ingredients or a dish name. 
+
+
+## Instructor's feedback to the introduction 
+
+Searching for recipes has been a popular project topic. It has lots of resources available online, and also contain some interesting challenges to work on. So can you tell me more about how do you define the best recipe? What do you envision the inputs from the users, and what retrieval system do you plan to use, and how you plan to present the outputs.
+
+Furthermore, how do you plan to construct the index for recipes?
+
+I think that these are interesting and important questions to consider when you try to put more details into your project design.
+
+
+## Next step: Term Project Proposal Presentation
+* A short online video last for about 5 minutes, using powerpoint slides or other presentation means to highlight the project
+* Project name and team members
+* What is the search problem in the project?
+* The team’s motivations to the project
+* What are the major inputs/outputs of the system? 
+* What is your approach and plan?
+* Major steps of your approach
+* Current status, schedule until the end of the term
+* The deadline is Ocober 30
+* Upload to the URL of the online video project to the discussion board in Courseweb
