@@ -51,3 +51,7 @@ I think that these are interesting and important questions to consider when you 
 * Current status, schedule until the end of the term
 * The deadline is Ocober 30
 * Upload to the URL of the online video project to the discussion board in Courseweb
+
+
+## Term Project Proposal Presentation Video
+URL: https://www.screencast.com/t/QHAuCQt7yDd
