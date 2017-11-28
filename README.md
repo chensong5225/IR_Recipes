@@ -1,4 +1,4 @@
-# Term Projects
+# Term Projects - Search the Best Recipes!
 
 ## Introduction:
 
