@@ -1,10 +1,6 @@
 package PreProcessData;
 
-/**
- * This is for INFSCI 2140 in 2017
- * 
- * TextTokenizer can split a sequence of text into individual word tokens.
- */
+
 public class WordTokenizer {
 	//you can add essential private methods or variables
 	String[] words;
@@ -15,7 +11,7 @@ public class WordTokenizer {
 		// this constructor will tokenize the input texts
 		// please remove all punctuations
 	}
-	
+
 	// YOU MUST IMPLEMENT THIS METHOD
 	public String nextWord() {
 		if(this.num < this.words.length)
@@ -23,5 +19,5 @@ public class WordTokenizer {
 		else
 			return null;
 	}
-	
+
 }

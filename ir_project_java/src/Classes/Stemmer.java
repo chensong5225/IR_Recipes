@@ -1,13 +1,6 @@
 package Classes;
 
 
-/**
- * Stemmer, implementing the Porter Stemming Algorithm
- *
- * The Stemmer class transforms a word into its root form. The input word can be
- * provided a character at time (by calling add()), or at once by calling one of
- * the various stem(something) methods.
- */
 
 public class Stemmer {
 	private char[] b;
@@ -101,7 +94,7 @@ public class Stemmer {
 	 * m() measures the number of consonant sequences between 0 and j. if c is a
 	 * consonant sequence and v a vowel sequence, and <..> indicates arbitrary
 	 * presence,
-	 * 
+	 *
 	 * <c><v> gives 0 <c>vc<v> gives 1 <c>vcvc<v> gives 2 <c>vcvcvc<v> gives 3
 	 * ....
 	 */
@@ -162,7 +155,7 @@ public class Stemmer {
 	 * cvc(i) is true <=> i-2,i-1,i has the form consonant - vowel - consonant
 	 * and also if the second c is not w,x or y. this is used when trying to
 	 * restore an e at the end of a short word. e.g.
-	 * 
+	 *
 	 * cav(e), lov(e), hop(e), crim(e), but snow, box, tray.
 	 */
 
@@ -211,14 +204,14 @@ public class Stemmer {
 
 	/*
 	 * step1() gets rid of plurals and -ed or -ing. e.g.
-	 * 
+	 *
 	 * caresses -> caress ponies -> poni ties -> ti caress -> caress cats -> cat
-	 * 
+	 *
 	 * feed -> feed agreed -> agree disabled -> disable
-	 * 
+	 *
 	 * matting -> mat mating -> mate meeting -> meet milling -> mill messing ->
 	 * mess
-	 * 
+	 *
 	 * meetings -> meet
 	 */
 
@@ -533,7 +526,7 @@ public class Stemmer {
 	 * that the word stemmed is expected to be in lower case: forcing lower case
 	 * must be done outside the Stemmer class. Usage: Stemmer file-name
 	 * file-name ...
-	 * 
+	 *
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
@@ -543,6 +536,6 @@ public class Stemmer {
 		s.stem();
 		System.out.println(s);
 	}
-	
-	
+
+
 }
