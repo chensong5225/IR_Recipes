@@ -1,6 +1,6 @@
 package Classes;
 
-public class Document {
+public class Document implements Comparable<Document>{
 	
 	protected String docid;
 	protected String docno;
@@ -11,6 +11,12 @@ public class Document {
 		this.docno = docno;
 		this.score = score;
 	}
+	
+    public int compareTo(Document d) {
+    	if(score() > d.score()) return -1;
+    	else if(score() == d.score()) return 0;
+    	else return 1;
+    }
 	
 	public String docid() {
 		return docid;
