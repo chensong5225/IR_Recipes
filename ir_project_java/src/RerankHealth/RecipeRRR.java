@@ -2,7 +2,7 @@ package RerankHealth;
 
 import Classes.Document;
 
-public class Recipe implements Comparable<Recipe>{
+public class RecipeRRR implements Comparable<RecipeRRR>{
 	
 	String title;
 	double rating;
@@ -12,7 +12,7 @@ public class Recipe implements Comparable<Recipe>{
 	double sodium;
 	double RRR;
 	
-	public Recipe(String t, double r, double c, double p, double f, double s, 
+	public RecipeRRR(String t, double r, double c, double p, double f, double s, 
 			double RRR){
 		title = t;
 		rating = r;
@@ -23,7 +23,7 @@ public class Recipe implements Comparable<Recipe>{
 		this.RRR = RRR;
 	}
 	
-	public Recipe(String t){
+	public RecipeRRR(String t){
 		title = t;
 		rating = 1;
 		calories = 1;
@@ -33,7 +33,7 @@ public class Recipe implements Comparable<Recipe>{
 		this.RRR = 1;
 	}
 	
-    public int compareTo(Recipe r) {
+    public int compareTo(RecipeRRR r) {
     	if(RRR > r.RRR) return -1;
     	else if(RRR == r.RRR) return 0;
     	else return 1;
@@ -52,7 +52,7 @@ public class Recipe implements Comparable<Recipe>{
 	        return false;
 	    if (getClass() != obj.getClass())
 	        return false;
-	    Recipe other = (Recipe) obj;
+	    RecipeRRR other = (RecipeRRR) obj;
 	    if (!title.equals(other.title))
 	        return false;
 	    return true;

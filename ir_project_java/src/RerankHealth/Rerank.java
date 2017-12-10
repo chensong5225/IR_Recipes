@@ -1,16 +1,21 @@
+package RerankHealth;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Classes.*;
-import IndexingLucene.*;
+import Classes.Document;
+import Classes.Query;
+import IndexingLucene.MyIndexReader;
 import SearchLucene.ExtractQuery;
 import SearchLucene.QueryRetrievalModel;
-import RerankHealth.*;
 
 public class Rerank {
 	
-	public static void main(String[] args) throws Exception{
+	public static ArrayList<String> findTitles(int topN) throws Exception{
+		
+		ArrayList<String> titles = new ArrayList<String>();
 		
 		final double medianRRR = 0.27746013395493785;
 		
@@ -21,10 +26,10 @@ public class Rerank {
 		QueryRetrievalModel model = new QueryRetrievalModel(ixreader);
 		ExtractQuery queries = new ExtractQuery();
 		
-		long startTime = System.currentTimeMillis();
+		//long startTime = System.currentTimeMillis();
 		while (queries.hasNext()){
 			Query aQuery = queries.next();
-			System.out.println(aQuery.GetTopicId() + "\t" + aQuery.GetQueryContent());
+			//System.out.println(aQuery.GetTopicId() + "\t" + aQuery.GetQueryContent());
 			List<Document> results = model.retrieveQuery(aQuery, 100);
 
 			//if the list is not empty
@@ -38,7 +43,7 @@ public class Rerank {
 						RecipeRRR r = rrr.get(idx);
 						//System.out.println(aQuery.GetTopicId() + " Q0 " + d.docno() + " " + rank + " " + d.score() + " MYRUN" + t);
 						d.setScore(r.getRRR());
-						System.out.println(aQuery.GetTopicId() + " Q0 " + d.docno() + " " + rank + " " + d.score() + " MYRUN");
+						//System.out.println(aQuery.GetTopicId() + " Q0 " + d.docno() + " " + rank + " " + d.score() + " MYRUN");
 					}
 					else{
 						d.setScore(medianRRR);
@@ -48,9 +53,20 @@ public class Rerank {
 				//resort the list
 				System.out.println();
 				Collections.sort(results);
-				for (int i=0; i<=10; i++) {
+				for (int i=0; i<topN; i++) {
 					Document d = results.get(i);
-					System.out.println(aQuery.GetTopicId() + " Q0 " + d.docno() + " " + d.score() + " MYRUN");
+					String t = d.docno().trim();
+					titles.add(t);
+					if(i>0){
+						//System.out.println(i + " " + titles.size());				
+						String tp = titles.get(i-1);
+						//System.out.println(t + " | " + tp);
+						if(tp.equals(t)){
+							titles.set(i-1, "");
+						}
+					}
+					//System.out.println(d.docno());
+					//System.out.println(aQuery.GetTopicId() + " Q0 " + d.docno() + " " + d.score() + " MYRUN");
 				}
 			}
 			//if return empty list
@@ -59,14 +75,25 @@ public class Rerank {
 				//give top 10 healthy recipe
 				List<RecipeRRR> rrrCopy = (ArrayList<RecipeRRR>) rrr.clone();
 				Collections.sort(rrrCopy);
-				for (int i=0; i<=10; i++) {
-					System.out.println(rrrCopy.get(i));
+				for (int i=0; i<topN; i++) {
+					//System.out.println(rrrCopy.get(i));
+					String t = rrrCopy.get(i).title.trim();
+					titles.add(t);
+					if(i!=0){
+						String tp = titles.get(i-1);
+						if(tp.equals(t)){
+							titles.set(i-1, "");
+						}
+					}
+					
 				}
 			}
 		}
-		long endTime = System.currentTimeMillis(); // end time of running code
-		System.out.println("\n\nqueries search time: " + (endTime - startTime) / 60000.0 + " min");
+		//long endTime = System.currentTimeMillis(); // end time of running code
+		//System.out.println("\n\nqueries search time: " + (endTime - startTime) / 60000.0 + " min");
 		ixreader.close();
+		//System.out.println(titles.size());
+		return titles;
 	}
 
 }

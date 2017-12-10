@@ -8,14 +8,14 @@ import com.opencsv.*;
 public class ReadCSV {
 	
 	String filename;
-	ArrayList<Recipe> rrr;
+	ArrayList<RecipeRRR> rrr;
 	
 	public ReadCSV(String filename) {
 		this.filename = filename;
-		rrr = new ArrayList<Recipe>();	
+		rrr = new ArrayList<RecipeRRR>();	
 	}
 	
-	public ArrayList<Recipe> read(){
+	public ArrayList<RecipeRRR> read(){
 		
 		CSVReader csvReader = null;
 		try{
@@ -32,7 +32,7 @@ public class ReadCSV {
                 	double sodium = Double.parseDouble(temp[6]);
                 	double RRR = Double.parseDouble(temp[7]);
                 	
-                	rrr.add(new Recipe(title, rating, calories, protein, fat, sodium, RRR));         	
+                	rrr.add(new RecipeRRR(title, rating, calories, protein, fat, sodium, RRR));         	
             	
             	}catch(Exception e){
             		//System.out.println(temp[0] + " Empty String");
